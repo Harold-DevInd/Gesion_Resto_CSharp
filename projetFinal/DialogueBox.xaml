@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projetFinal"
         mc:Ignorable="d"
-        Title="Choisir une couleur" Height="80" Width="250" WindowStartupLocation="CenterOwner" MinWidth="250" MinHeight="80" MaxWidth="250" MaxHeight="80" >
+        Title="Choisir une couleur" Height="120" Width="250" WindowStartupLocation="CenterOwner" MinWidth="250" MinHeight="120" MaxWidth="250" MaxHeight="120" >
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

@@ -58,7 +58,7 @@ namespace projetFinal
                     string colorText = ChoixCouleur.CouleurChoisie;
                     var color = (Color)ColorConverter.ConvertFromString(colorText);
                     ParamManager.SaveRegistryParameter("CouleurBoutons", colorText);
-                    mainWindow.ChangerCouleurBoutons(color);
+                    mainWindow.ChangerCouleurBoutons(mainWindow.MainGrid,color);
                 }
                 catch
                 {

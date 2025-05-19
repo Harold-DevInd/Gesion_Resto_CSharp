@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projetFinal"
         mc:Ignorable="d"
-        Title="Gestion de l'Application" Height="180" Width="400" MinHeight="180" MaxWidth="400" MaxHeight="200" MinWidth="400">
+        Title="Gestion de l'Application" Height="200" Width="400" MinHeight="200" MaxWidth="400" MaxHeight="200" MinWidth="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

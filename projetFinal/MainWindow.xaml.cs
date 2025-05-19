@@ -38,6 +38,9 @@ namespace projetFinal
             dgEmployes.ItemsSource = ListeEmployes;
             dgPlats.ItemsSource = ListePlats;
             dgCommandes.ItemsSource = ListeCommandes;
+            ChargerCheminFichiers();
+            ChargerCouleurFond();
+            ChargerCouleurBoutons();
         }
 
         // Gestion du menu
@@ -317,7 +320,7 @@ namespace projetFinal
                 try
                 {
                     var color = (Color)ColorConverter.ConvertFromString(couleur);
-                    ChangerCouleurBoutons(color);
+                    ChangerCouleurBoutons(MainGrid,color);
                 }
                 catch
                 {
@@ -330,16 +333,20 @@ namespace projetFinal
             MainGrid.Background = new SolidColorBrush(couleur);
         }
 
-        public void ChangerCouleurBoutons(Color couleur)
+        public void ChangerCouleurBoutons(DependencyObject parent, Color couleur)
         {
-            var brush = new SolidColorBrush(couleur);
-
-            foreach (var element in MainGrid.Children)
+            int count = VisualTreeHelper.GetChildrenCount(parent);
+            for (int i = 0; i < count; i++)
             {
-                if (element is Button bouton)
+                var child = VisualTreeHelper.GetChild(parent, i);
+
+                if (child is Button bouton)
                 {
-                    bouton.Background = brush;
+                    bouton.Background = new SolidColorBrush(couleur);
                 }
+
+                // Appel récursif pour chercher dans les enfants
+                ChangerCouleurBoutons(child, couleur);
             }
         }
         #endregion

@@ -6,10 +6,9 @@ namespace projetFinal
     {
         public string CouleurChoisie { get; private set; }
 
-        public DialogueBox(string prompt = "")
+        public DialogueBox()
         {
             InitializeComponent();
-            CouleurSaisie.Text = prompt;
         }
 
         private void OkDB_Click(object sender, RoutedEventArgs e)
