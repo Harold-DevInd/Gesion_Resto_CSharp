@@ -1,7 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel.Design;
 using System.Data.Common;
+using System.IO;
 using System.Text;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -45,16 +47,161 @@ namespace projetFinal
 
         // Gestion du menu
         #region Gestion du menu
-        private void Utilisateur_Click(object sender, RoutedEventArgs e) { /* ... */ }
-        private void ImporterEmployes_Click(object sender, RoutedEventArgs e) { /* ... */ }
-        private void ExporterEmployes_Click(object sender, RoutedEventArgs e) { /* ... */ }
-        private void ImporterPlats_Click(object sender, RoutedEventArgs e) { /* ... */ }
-        private void ExporterPlats_Click(object sender, RoutedEventArgs e) { /* ... */ }
-        private void ImporterCommandes_Click(object sender, RoutedEventArgs e) { /* ... */ }
-        private void ExporterCommandes_Click(object sender, RoutedEventArgs e) { /* ... */ }
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void ImporterEmployes_Click(object sender, RoutedEventArgs e)
         {
-
+            string cheminFichierEmploye = System.IO.Path.Combine(cheminFichier, "Employes.json");
+            if (File.Exists(cheminFichierEmploye))
+            {
+                try
+                {
+                    string ListeEmployesJson = File.ReadAllText(cheminFichierEmploye);
+                    var employes = JsonSerializer.Deserialize<ObservableCollection<Employes>>(ListeEmployesJson);
+                    if (employes != null)
+                    {
+                        ListeEmployes = employes;
+                        dgEmployes.ItemsSource = ListeEmployes;
+                        MessageBox.Show("Employés importés avec succès.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Le fichier d'employés est vide ou invalide.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de l'import : " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Aucun fichier d'employés trouvé.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private void ExporterEmployes_Click(object sender, RoutedEventArgs e) 
+        {
+            string cheminFichierEmploye = System.IO.Path.Combine(cheminFichier, "Employes.json");
+            if (ListeEmployes.Count == 0)
+            {
+                MessageBox.Show("Aucun employé à exporter.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            else
+            {
+                try
+                {
+                    string ListeEmployesJson = JsonSerializer.Serialize(ListeEmployes);
+                    File.WriteAllText(cheminFichierEmploye, ListeEmployesJson);
+                    MessageBox.Show("Employés exportés avec succès.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de l'export : " + ex.Message);
+                }
+            }
+        }
+        private void ImporterPlats_Click(object sender, RoutedEventArgs e)
+        {
+            string cheminFichierPlat = System.IO.Path.Combine(cheminFichier, "Plats.json");
+            if (File.Exists(cheminFichierPlat))
+            {
+                try
+                {
+                    string ListePlatsJson = File.ReadAllText(cheminFichierPlat);
+                    var plats = JsonSerializer.Deserialize<ObservableCollection<Plats>>(ListePlatsJson);
+                    if (plats != null)
+                    {
+                        ListePlats = plats;
+                        dgPlats.ItemsSource = ListePlats;
+                        MessageBox.Show("Plats importés avec succès.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Le fichier de plats est vide ou invalide.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de l'import : " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Aucun fichier de plats trouvé.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private void ExporterPlats_Click(object sender, RoutedEventArgs e) 
+        {
+            string cheminFichierPlat = System.IO.Path.Combine(cheminFichier, "Plats.json");
+            if (ListePlats.Count == 0)
+            {
+                MessageBox.Show("Aucun plat à exporter.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            else
+            {
+                try
+                {
+                    string ListePlatsJson = JsonSerializer.Serialize(ListePlats);
+                    File.WriteAllText(cheminFichierPlat, ListePlatsJson);
+                    MessageBox.Show("Plats exportés avec succès.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de l'export : " + ex.Message);
+                }
+            }
+        }
+        private void ImporterCommandes_Click(object sender, RoutedEventArgs e) 
+        {
+            string cheminFichierCommande = System.IO.Path.Combine(cheminFichier, "Commandes.json");
+            if (File.Exists(cheminFichierCommande))
+            {
+                try
+                {
+                    string ListeCommandesJson = File.ReadAllText(cheminFichierCommande);
+                    var commandes = JsonSerializer.Deserialize<ObservableCollection<Commandes>>(ListeCommandesJson);
+                    if(commandes != null)
+                    {
+                        ListeCommandes = commandes;
+                        dgCommandes.ItemsSource = ListeCommandes;
+                        MessageBox.Show("Commandes importées avec succès.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Le fichier de commandes est vide ou invalide.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de l'import : " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Aucun fichier de commandes trouvé.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private void ExporterCommandes_Click(object sender, RoutedEventArgs e)
+        {
+            string cheminFichierCommande = System.IO.Path.Combine(cheminFichier, "Commandes.json");
+            if (ListeCommandes.Count == 0)
+            {
+                MessageBox.Show("Aucune commande à exporter.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            else
+            {
+                try
+                {
+                    string ListeCommandesJson = JsonSerializer.Serialize(ListeCommandes);
+                    File.WriteAllText(cheminFichierCommande, ListeCommandesJson);
+                    MessageBox.Show("Commandes exportées avec succès.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de l'export : " + ex.Message);
+                }
+            }
         }
         #endregion
 
