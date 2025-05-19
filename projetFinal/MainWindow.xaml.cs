@@ -55,7 +55,11 @@ namespace projetFinal
                 try
                 {
                     string ListeEmployesJson = File.ReadAllText(cheminFichierEmploye);
-                    var employes = JsonSerializer.Deserialize<ObservableCollection<Employes>>(ListeEmployesJson);
+                    var employes = JsonSerializer.Deserialize<ObservableCollection<Employes>>(ListeEmployesJson, new JsonSerializerOptions
+                    {
+                        WriteIndented = true,
+                        IncludeFields = true
+                    });
                     if (employes != null)
                     {
                         ListeEmployes = employes;
@@ -107,7 +111,11 @@ namespace projetFinal
                 try
                 {
                     string ListePlatsJson = File.ReadAllText(cheminFichierPlat);
-                    var plats = JsonSerializer.Deserialize<ObservableCollection<Plats>>(ListePlatsJson);
+                    var plats = JsonSerializer.Deserialize<ObservableCollection<Plats>>(ListePlatsJson, new JsonSerializerOptions
+                    {
+                        WriteIndented = true,
+                        IncludeFields = true
+                    });
                     if (plats != null)
                     {
                         ListePlats = plats;
@@ -159,8 +167,12 @@ namespace projetFinal
                 try
                 {
                     string ListeCommandesJson = File.ReadAllText(cheminFichierCommande);
-                    var commandes = JsonSerializer.Deserialize<ObservableCollection<Commandes>>(ListeCommandesJson);
-                    if(commandes != null)
+                    var commandes = JsonSerializer.Deserialize<ObservableCollection<Commandes>>(ListeCommandesJson, new JsonSerializerOptions
+                    {
+                        WriteIndented = true,
+                        IncludeFields = true
+                    });
+                    if (commandes != null)
                     {
                         ListeCommandes = commandes;
                         dgCommandes.ItemsSource = ListeCommandes;
@@ -425,7 +437,7 @@ namespace projetFinal
 
         public void ChargerCheminFichiers()
         {
-            cheminFichier = ParamManager.LoadRegistryParameter("CheminFichiers", "C:\\");
+            cheminFichier = ParamManager.LoadRegistryParameter("CheminFichiers", "C:\\Users\\harol\\Documents\\HEPL\\Bach 2\\Q2\\POO\\C#\\Laboratoire\\projetFinal\\projetFinal\\data\\");
             if (cheminFichier == null)
             {
                 MessageBox.Show("Erreur lors de l'enregistrement du chemin.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
