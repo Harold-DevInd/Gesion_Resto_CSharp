@@ -1,0 +1,25 @@
+﻿<Window x:Class="projetFinal.ModifierApp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:projetFinal"
+        mc:Ignorable="d"
+        Title="Gestion de l'Application" Height="180" Width="400" MinHeight="180" MaxWidth="400" MaxHeight="200" MinWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox x:Name="txtChemin" Grid.Row="0" Grid.Column="1" Text="(Entrer le chemin du dossier choisi)" Margin="10"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="Valider le dossier" Click="ChoisirDossier_Click" Margin="10"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Choisir une couleur de fond" Click="ChoisirCouleurBG_Click" Margin="10"/>
+        <Button Grid.Row="3" Grid.Column="2" Content="Choisir une couleur pour les bouttons" Click="ChoisirCouleurB_Click" Margin="10"/>
+    </Grid>
+</Window>
