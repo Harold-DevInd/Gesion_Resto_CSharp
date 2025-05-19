@@ -6,7 +6,7 @@ namespace projetFinal
 {
     public partial class ModifierApp : Window
     {
-        private string chemin;
+        private string chemin = String.Empty;
 
         private MyAppParamManager ParamManager = new MyAppParamManager();
         public ModifierApp()
@@ -30,6 +30,10 @@ namespace projetFinal
         {
 
             var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow == null) {
+                MessageBox.Show("La fenêtre principale n'est pas disponible.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             var ChoixCouleur = new DialogueBox();
             if (ChoixCouleur.ShowDialog() == true)
             {
@@ -50,6 +54,12 @@ namespace projetFinal
         private void ChoisirCouleurB_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow == null)
+            {
+                MessageBox.Show("La fenêtre principale n'est pas disponible.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             var ChoixCouleur = new DialogueBox();
             if (ChoixCouleur.ShowDialog() == true)
             {
@@ -58,7 +68,7 @@ namespace projetFinal
                     string colorText = ChoixCouleur.CouleurChoisie;
                     var color = (Color)ColorConverter.ConvertFromString(colorText);
                     ParamManager.SaveRegistryParameter("CouleurBoutons", colorText);
-                    mainWindow.ChangerCouleurBoutons(mainWindow.MainGrid,color);
+                    mainWindow.ChangerCouleurBoutons(mainWindow.MainGrid, color);
                 }
                 catch
                 {

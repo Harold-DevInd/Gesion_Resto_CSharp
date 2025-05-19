@@ -32,7 +32,7 @@ namespace projetFinal
 
         private MyAppParamManager ParamManager = new MyAppParamManager();
 
-        private string cheminFichier;
+        private string cheminFichier = string.Empty;
 
         public MainWindow()
         {
@@ -367,7 +367,7 @@ namespace projetFinal
                 else
                 {
                     // retourne le premier élément correspondant ou null s’il n’existe pas.
-                    Plats PlatCommande = ListePlats.FirstOrDefault(p => p.IdPlat == ChoixPlat);
+                    Plats? PlatCommande = ListePlats.FirstOrDefault(p => p.IdPlat == ChoixPlat);
 
                     if (PlatCommande == null)
                     {

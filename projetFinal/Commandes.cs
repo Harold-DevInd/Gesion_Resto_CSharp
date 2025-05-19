@@ -5,12 +5,14 @@ namespace projetFinal
     public class Commandes : INotifyPropertyChanged
     {
         private int idCommande;
-        private Plats platChoisi;
+        private Plats platChoisi = null!;
         private int quantite;
         private int table; 
         private float prixTotal;
 
-        public Commandes() { }
+        public Commandes() {
+            PropertyChanged = null!;
+        }
         public Commandes(int idCommande, Plats platChoisi, int quantite, int table)
         {
             IdCommande = idCommande;
@@ -18,6 +20,7 @@ namespace projetFinal
             Quantite = quantite;
             Table = table;
             PrixTotal = PlatChoisi.Prix * Quantite;
+            PropertyChanged = null!;
         }
 
         public int IdCommande
@@ -87,7 +90,7 @@ namespace projetFinal
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

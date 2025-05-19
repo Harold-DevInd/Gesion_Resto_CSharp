@@ -4,16 +4,15 @@ namespace projetFinal
 {
     public class Plats : INotifyPropertyChanged
     {
-
         private int idPlat;
-        private string nomPlat;
-        private string origine;
+        private string nomPlat = string.Empty; // Initialize to avoid nullability issues
+        private string origine = string.Empty; 
         private float prix;
-        private string allergene;
+        private string allergene = string.Empty;
 
         public Plats() { }
 
-        public Plats(int idPlat, string nomPlat, string origine, float prix,string allergene)
+        public Plats(int idPlat, string nomPlat, string origine, float prix, string allergene)
         {
             IdPlat = idPlat;
             Nom = nomPlat;
@@ -87,7 +86,7 @@ namespace projetFinal
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

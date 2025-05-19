@@ -4,7 +4,7 @@ namespace projetFinal
 {
     public partial class DialogueBox : Window
     {
-        public string CouleurChoisie { get; private set; }
+        public string CouleurChoisie = string.Empty;
 
         public DialogueBox()
         {

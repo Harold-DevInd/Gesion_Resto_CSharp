@@ -8,8 +8,8 @@ using Microsoft.Win32;
 
 namespace projetFinal  
 {  
-    public class MyAppParamManager  
-    {  
+public class MyAppParamManager
+    {
         string CheminRegistre = @"SOFTWARE\GestionRestaurant";
 
         public void SaveRegistryParameter(string keyName, string value)
@@ -22,10 +22,10 @@ namespace projetFinal
 
         public string LoadRegistryParameter(string keyName, string defaultValue)
         {
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(CheminRegistre))
+            using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(CheminRegistre))
             {
                 return key?.GetValue(keyName)?.ToString() ?? defaultValue;
             }
         }
-    }  
+    }
 }  
