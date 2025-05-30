@@ -29,8 +29,8 @@
         <Label Grid.Row="2" Grid.Column="0" Content="Prix:" Margin="5" VerticalAlignment="Center"/>
         <TextBox x:Name="txtPrix" Grid.Row="2" Grid.Column="1" Margin="5"/>
 
-        <Label Grid.Row="3" Grid.Column="0" Content="Allergene:" Margin="5" VerticalAlignment="Center"/>
-        <TextBox x:Name="txtAllergene" Grid.Row="3" Grid.Column="1" Margin="5"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Photo:" Margin="5" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtPhoto" Grid.Row="3" Grid.Column="1" Margin="5"/>
 
         <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
             <Button Content="OK" Width="75" Margin="5" Click="Ok_Click" IsDefault="True"/>

@@ -5,7 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projetFinal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="900" MinWidth="800" MinHeight="480">
+        Title="MainWindow" Height="580" Width="900" MinWidth="800" MinHeight="520">
+    
+    <Window.Resources>
+        <local:StringToImageConverter x:Key="ImageConverter"/>
+    </Window.Resources>
+    
     <DockPanel>
         <Menu VerticalAlignment="Top"  DockPanel.Dock="Top" >
             <MenuItem Header="Importer">
@@ -59,9 +64,9 @@
                             <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"/>
                             <DataGridTextColumn Header="Origine" Binding="{Binding Origine}"/>
                             <DataGridTextColumn Header="Prix" Binding="{Binding Prix}"/>
-                            <DataGridTextColumn Header="Allergene" Binding="{Binding Allergene}"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <Image Width="100" Height="100" Source="{Binding Photo, Converter={StaticResource ImageConverter}}" Margin="14,0,0,0"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Bottom" Margin="0,5,0,0">
                         <Button Content="Ajouter" Width="75" Height="25" Margin="5" Click="AjouterP_Click"/>
                         <Button Content="Modifier" Width="75" Height="25" Margin="5" Click="ModifierP_Click"/>

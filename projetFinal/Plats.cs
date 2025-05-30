@@ -4,21 +4,22 @@ namespace projetFinal
 {
     public class Plats : INotifyPropertyChanged
     {
+        // Initialisation pour eviter les avertissement
         private int idPlat;
-        private string nomPlat = string.Empty; // Initialize to avoid nullability issues
+        private string nomPlat = string.Empty; 
         private string origine = string.Empty; 
         private float prix;
-        private string allergene = string.Empty;
+        private string photo = string.Empty;
 
         public Plats() { }
 
-        public Plats(int idPlat, string nomPlat, string origine, float prix, string allergene)
+        public Plats(int idPlat, string nomPlat, string origine, float prix, string photo)
         {
             IdPlat = idPlat;
             Nom = nomPlat;
             Origine = origine;
             Prix = prix;
-            Allergene = allergene;
+            Photo = photo;
         }
 
         public int IdPlat
@@ -73,15 +74,15 @@ namespace projetFinal
             }
         }
 
-        public string Allergene
+        public string Photo
         {
-            get => allergene;
+            get => photo;
             set
             {
-                if (allergene != value)
+                if (photo != value)
                 {
-                    allergene = value;
-                    OnPropertyChanged(nameof(Allergene));
+                    photo = value;
+                    OnPropertyChanged(nameof(Photo));
                 }
             }
         }

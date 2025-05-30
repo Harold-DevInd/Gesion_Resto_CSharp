@@ -23,7 +23,7 @@ namespace projetFinal
         public string NomPlat { get; private set; }
         public string OriginePlat { get; private set; }
         public float PrixPlat { get; private set; }
-        public string Allergene { get; private set; }
+        public string Photo { get; private set; }
 
         public AjoutPlat()
         {
@@ -50,7 +50,7 @@ namespace projetFinal
             {
                 PrixPlat = prix;
             }
-            Allergene = txtAllergene.Text.Trim();
+            Photo = txtPhoto.Text.Trim();
 
             DialogResult = true;
             Close();

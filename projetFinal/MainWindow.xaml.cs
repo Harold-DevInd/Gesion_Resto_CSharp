@@ -224,7 +224,7 @@ namespace projetFinal
             var NewPlat = new AjoutPlat { Owner = this };
             if (NewPlat.ShowDialog() == true)
             {
-                ListePlats.Add(new Plats(idPlatCourant, NewPlat.NomPlat, NewPlat.OriginePlat, NewPlat.PrixPlat, NewPlat.Allergene));
+                ListePlats.Add(new Plats(idPlatCourant, NewPlat.NomPlat, NewPlat.OriginePlat, NewPlat.PrixPlat, NewPlat.Photo));
             }
             idPlatCourant++;
             MessageBox.Show("Plat ajouté avec succès.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -249,14 +249,14 @@ namespace projetFinal
                     NewPlat.txtNom.Text = c.Nom;
                     NewPlat.txtOrigine.Text = c.Origine;
                     NewPlat.txtPrix.Text = c.Prix.ToString();
-                    NewPlat.txtAllergene.Text = c.Allergene;
+                    NewPlat.txtPhoto.Text = c.Photo;
 
                     if (NewPlat.ShowDialog() == true)
                     {
                         c.Nom = NewPlat.txtNom.Text;
                         c.Origine = NewPlat.txtOrigine.Text;
                         c.Prix = float.Parse(NewPlat.txtPrix.Text);
-                        c.Allergene = NewPlat.txtAllergene.Text;
+                        c.Photo = NewPlat.txtPhoto.Text;
                     }
 
                     MessageBox.Show("Plat modifié avec succès.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
