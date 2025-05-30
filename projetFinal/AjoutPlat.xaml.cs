@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace projetFinal
 {
@@ -50,10 +51,31 @@ namespace projetFinal
             {
                 PrixPlat = prix;
             }
-            Photo = txtPhoto.Text.Trim();
+            Photo = txtPhotoPath.Text;
 
             DialogResult = true;
             Close();
+        }
+
+        private void BrowseImage_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new OpenFileDialog
+            {
+                Title = "Choisir une image",
+                Filter = "Images (*.png;*.jpg;*.jpeg)|*.png;*.jpg;*.jpeg"
+            };
+
+            if (dialog.ShowDialog() == true)
+            {
+                txtPhotoPath.Text = dialog.FileName;
+                PreviewImage.Source = new BitmapImage(new Uri(dialog.FileName));
+            }
+        }
+
+        private void Annuler_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
+            this.Close();
         }
     }
 }

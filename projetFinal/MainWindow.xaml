@@ -58,7 +58,7 @@
 
             <GroupBox Header="Plats" Grid.Row="0" Grid.Column="1" Margin="5">
                 <DockPanel>
-                    <DataGrid x:Name="dgPlats" AutoGenerateColumns="False" CanUserAddRows="False" DockPanel.Dock="Top" Height="128">
+                    <DataGrid x:Name="dgPlats" AutoGenerateColumns="False" CanUserAddRows="False" DockPanel.Dock="Top" Height="128" SelectionChanged="PlatsDataGrid_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Binding="{Binding IdPlat}"/>
                             <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"/>
@@ -66,7 +66,7 @@
                             <DataGridTextColumn Header="Prix" Binding="{Binding Prix}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Image Width="100" Height="100" Source="{Binding Photo, Converter={StaticResource ImageConverter}}" Margin="14,0,0,0"/>
+                    <Image x:Name="ImagePlat" Width="100" Height="100" Source="{Binding Photo, Converter={StaticResource ImageConverter}}" Margin="14,0,0,0"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Bottom" Margin="0,5,0,0">
                         <Button Content="Ajouter" Width="75" Height="25" Margin="5" Click="AjouterP_Click"/>
                         <Button Content="Modifier" Width="75" Height="25" Margin="5" Click="ModifierP_Click"/>

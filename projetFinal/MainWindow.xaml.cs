@@ -249,14 +249,14 @@ namespace projetFinal
                     NewPlat.txtNom.Text = c.Nom;
                     NewPlat.txtOrigine.Text = c.Origine;
                     NewPlat.txtPrix.Text = c.Prix.ToString();
-                    NewPlat.txtPhoto.Text = c.Photo;
+                    NewPlat.txtPhotoPath.Text = c.Photo;
 
                     if (NewPlat.ShowDialog() == true)
                     {
                         c.Nom = NewPlat.txtNom.Text;
                         c.Origine = NewPlat.txtOrigine.Text;
                         c.Prix = float.Parse(NewPlat.txtPrix.Text);
-                        c.Photo = NewPlat.txtPhoto.Text;
+                        c.Photo = NewPlat.txtPhotoPath.Text;
                     }
 
                     MessageBox.Show("Plat modifié avec succès.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -275,7 +275,27 @@ namespace projetFinal
                 MessageBox.Show("Veuillez sélectionner un plat à supprimer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            else if (dgEmployes.SelectedItem is Plats c) ListePlats.Remove(c);
+            else if (dgPlats.SelectedItem is Plats c) ListePlats.Remove(c);
+        }
+
+        private void PlatsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dgPlats.SelectedItem is Plats plat && !string.IsNullOrEmpty(plat.Photo))
+            {
+                try
+                {
+                    ImagePlat.Source = new BitmapImage(new Uri(plat.Photo, UriKind.Absolute));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors du chargement de l'image : " + ex.Message);
+                    ImagePlat.Source = null;
+                }
+            }
+            else
+            {
+                ImagePlat.Source = null;
+            }
         }
         #endregion
 

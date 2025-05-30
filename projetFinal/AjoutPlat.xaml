@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projetFinal"
         mc:Ignorable="d"
-            Title="Ajouter un Plat" Height="240" Width="400" WindowStartupLocation="CenterOwner" MinWidth="400" MinHeight="240" MaxWidth="400" MaxHeight="240">
+            Title="Ajouter un Plat" Height="300" Width="400" WindowStartupLocation="CenterOwner" MinWidth="400" MinHeight="300" MaxWidth="400" MaxHeight="240">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -29,10 +30,15 @@
         <Label Grid.Row="2" Grid.Column="0" Content="Prix:" Margin="5" VerticalAlignment="Center"/>
         <TextBox x:Name="txtPrix" Grid.Row="2" Grid.Column="1" Margin="5"/>
 
-        <Label Grid.Row="3" Grid.Column="0" Content="Photo:" Margin="5" VerticalAlignment="Center"/>
-        <TextBox x:Name="txtPhoto" Grid.Row="3" Grid.Column="1" Margin="5"/>
+        <StackPanel Orientation="Vertical" Margin="5" Grid.Row="3">
+            <TextBlock Text="Image (Photo)" />
+            <TextBox x:Name="txtPhotoPath" Width="250" IsReadOnly="True" />
+        </StackPanel>
+        <Button Content="..." Height="20" Width="30" Click="BrowseImage_Click" Margin="5,0,0,0" Grid.Row="3" Grid.Column="2"/>
 
-        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+        <Image x:Name="PreviewImage" Grid.Row="4" Height="100" Width="100" Stretch="Uniform" Margin="5"/>
+
+        <StackPanel Grid.Row="4" Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center">
             <Button Content="OK" Width="75" Margin="5" Click="Ok_Click" IsDefault="True"/>
             <Button Content="Annuler" Width="75" Margin="5" IsCancel="True"/>
         </StackPanel>

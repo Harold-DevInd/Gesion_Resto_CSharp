@@ -21,7 +21,6 @@ namespace projetFinal
                 }
                 catch
                 {
-                    // Retourne une image par défaut ou null si le chemin est invalide
                     return null;
                 }
             }
